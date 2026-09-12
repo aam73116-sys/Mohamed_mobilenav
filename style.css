@@ -1,0 +1,147 @@
+/* ===== DESKTOP STYLES (default, above 768px) ===== */
+
+/* Base page font, remove default margin */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: #1e293b;
+}
+
+/* .site-header = top bar. sticky keeps it visible while scrolling. */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: #7a3b2e;
+  padding: 14px 20px;
+}
+
+/* .header-inner = flex row: brand left, nav right. */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Brand text on the left */
+.brand {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* .menu-toggle = hamburger. Hidden on desktop. */
+.menu-toggle {
+  display: none;
+}
+
+/* .navlinks = link list. flex = horizontal row on desktop. */
+.primary-nav .navlinks {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* The links themselves */
+.primary-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Main content spacing */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  line-height: 1.6;
+}
+
+.reflection {
+  font-size: 15px;
+  color: #334155;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+/* ===== MOBILE STYLES (drawer) — 767px and below ===== */
+@media (max-width: 767px) {
+
+  /* Show hamburger on small screens */
+  .menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  /* Each bar of the hamburger */
+  .menu-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #ffffff;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+  }
+
+  /* .primary-nav becomes a fixed drawer on the RIGHT edge. */
+  .primary-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    background-color: #7a3b2e;
+    padding: 80px 24px;
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+  }
+
+  /* When body has .menu-open, slide the drawer in */
+  body.menu-open .primary-nav {
+    transform: translateX(0);
+  }
+
+  /* Stack links vertically in the drawer */
+  .primary-nav .navlinks {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* .nav-backdrop = dim layer over the page. */
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.5);
+  }
+
+  /* Lock page scroll while drawer is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* When open, turn hamburger into an X */
+  body.menu-open .menu-toggle .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  body.menu-open .menu-toggle .bar:nth-child(2) {
+    opacity: 0;
+  }
+  body.menu-open .menu-toggle .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}

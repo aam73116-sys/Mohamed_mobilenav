@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Navigation Demo</title>
+  <!-- Link to the external stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER: sticky bar, brand left + nav right -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Brand on the LEFT -->
+      <a href="#top" class="brand">Huwa Studio</a>
+
+      <!-- Hamburger button. Real <button> so keyboard can focus it.
+           aria-expanded = is the drawer open? aria-controls points to the nav.
+           aria-label = spoken name (script flips it to "Close menu"). -->
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+
+      <!-- Primary nav. Own aria-label so screen readers can name it. -->
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <ul class="navlinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#tracks">Tracks</a></li>
+          <li><a href="#apply">Apply</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Backdrop: dim layer behind drawer. "hidden" removes it until menu opens. -->
+  <div class="nav-backdrop" hidden></div>
+
+  <!-- MAIN: only ONE h1 on the page -->
+  <main id="top">
+    <h1>Welcome to Huwa Studio</h1>
+    <p>Some placeholder content so the page is scrollable.</p>
+
+    <!-- Reflection (100-200 words). Edit to match YOUR experience. -->
+    <p class="reflection">
+      <strong>Reflection:</strong> The trickiest close-method for me to wire up
+      was the Escape key, because I had to check that the menu was actually open
+      before closing it, instead of running the code on every key press. While
+      building this, I looked up how transform: translateX() works so the drawer
+      would slide in from the right instead of just appearing, and I also had to
+      look up why the backdrop needed the hidden attribute removed in JavaScript.
+      One place I have seen a right-side mobile drawer outside class is the Amazon
+      app on my phone, where the menu slides in from the side when you tap the
+      icon. Building it from scratch helped me understand what is really happening
+      behind that simple tap.
+    </p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Amgad</p>
+  </footer>
+
+  <!-- Toggle script, loaded at the end so the HTML exists first -->
+  <script src="js/script.js"></script>
+</body>
+</html>
